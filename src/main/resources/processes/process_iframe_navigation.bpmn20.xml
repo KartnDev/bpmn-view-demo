@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:jmix="http://jmix.io/schema/bpm/bpmn" xmlns:flowable="http://flowable.org/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flowable.org/processdef">
+  <process id="process" name="Process" isExecutable="true">
+    <startEvent id="startEvent1">
+      <extensionElements>
+        <jmix:formData type="no-form" />
+      </extensionElements>
+      <outgoing>Flow_0xmf0zn</outgoing>
+    </startEvent>
+    <sequenceFlow id="Flow_0xmf0zn" sourceRef="startEvent1" targetRef="Activity_1466rx1" />
+    <userTask id="Activity_1466rx1" flowable:candidateUsers="admin" jmix:candidateUsersValue="admin">
+      <extensionElements>
+        <jmix:formData type="jmix-screen" openMode="NAVIGATE" screenId="IframeView">
+          <jmix:formOutcomes>
+            <jmix:formOutcome id="approve" />
+            <jmix:formOutcome id="reject" />
+          </jmix:formOutcomes>
+        </jmix:formData>
+      </extensionElements>
+      <incoming>Flow_0xmf0zn</incoming>
+      <outgoing>Flow_0m0lgyb</outgoing>
+      <outgoing>Flow_1oup6oz</outgoing>
+    </userTask>
+    <endEvent id="Event_1pzpat2" name="APPROVE">
+      <incoming>Flow_0m0lgyb</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_0m0lgyb" sourceRef="Activity_1466rx1" targetRef="Event_1pzpat2">
+      <extensionElements>
+        <jmix:conditionDetails conditionSource="userTaskOutcome" conditionType="anyoneCompleted" userTaskId="Activity_1466rx1" userTaskOutcome="approve" />
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression">${execution.getVariable('Activity_1466rx1_result') != null &amp;&amp; bpm_UserTaskResults.containsOutcome(execution.getVariable('Activity_1466rx1_result'), 'approve')}</conditionExpression>
+    </sequenceFlow>
+    <endEvent id="Event_1nnecvm" name="REJECT">
+      <incoming>Flow_1oup6oz</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_1oup6oz" sourceRef="Activity_1466rx1" targetRef="Event_1nnecvm">
+      <extensionElements>
+        <jmix:conditionDetails conditionSource="userTaskOutcome" conditionType="anyoneCompleted" userTaskId="Activity_1466rx1" userTaskOutcome="reject" />
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression">${execution.getVariable('Activity_1466rx1_result') != null &amp;&amp; bpm_UserTaskResults.containsOutcome(execution.getVariable('Activity_1466rx1_result'), 'reject')}</conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_process" bpmnElement="process">
+      <bpmndi:BPMNShape id="BPMNShape_startEvent1" bpmnElement="startEvent1">
+        <omgdc:Bounds x="150" y="150" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mwyh6n_di" bpmnElement="Activity_1466rx1">
+        <omgdc:Bounds x="230" y="125" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1pzpat2_di" bpmnElement="Event_1pzpat2">
+        <omgdc:Bounds x="512" y="147" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="503" y="190" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1nnecvm_di" bpmnElement="Event_1nnecvm">
+        <omgdc:Bounds x="512" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="509" y="305" width="43" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0xmf0zn_di" bpmnElement="Flow_0xmf0zn">
+        <di:waypoint x="180" y="165" />
+        <di:waypoint x="230" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m0lgyb_di" bpmnElement="Flow_0m0lgyb">
+        <di:waypoint x="330" y="165" />
+        <di:waypoint x="512" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oup6oz_di" bpmnElement="Flow_1oup6oz">
+        <di:waypoint x="280" y="205" />
+        <di:waypoint x="280" y="280" />
+        <di:waypoint x="512" y="280" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
