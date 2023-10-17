@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://iframeView.title">
+    <layout>
+        <iframe resource="https://www.jmix.io/" width="100%" height="95%">
+        </iframe>
+        <hbox classNames="buttons-panel">
+            <button id="approveBtn" text="Approve" icon="CHECK"/>
+            <button id="rejectBtn" text="Reject" icon="BAN"/>
+        </hbox>
+    </layout>
+</view>
