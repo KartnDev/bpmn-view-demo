@@ -41,7 +41,6 @@ public class NavigationBpmAwareLifecycleSupport {
         Task task = taskService.createTaskQuery()
                 .taskId(taskId)
                 .singleResult();
-        runtimeService.getVariable(task.getExecutionId(), "username");
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
                 .processDefinitionId(task.getProcessDefinitionId())
                 .singleResult();
