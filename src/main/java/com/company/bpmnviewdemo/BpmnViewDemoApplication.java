@@ -5,6 +5,7 @@ import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
+import io.jmix.core.repository.EnableJmixDataRepositories;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
 @Push
 @Theme(value = "bpmn-view-demo")
 @PWA(name = "Bpmn View Demo", shortName = "Bpmn View Demo")
+@EnableJmixDataRepositories
 @SpringBootApplication
 public class BpmnViewDemoApplication implements AppShellConfigurator {
 

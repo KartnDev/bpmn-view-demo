@@ -2,6 +2,24 @@
 <project version="4">
   <component name="JmixDataStoreSettingsManager">
     <moduleSettings>
+      <entry key="bpmn-view-demo.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2>
+                    <option name="generateDdlType" value="CREATE_AND_UPDATE" />
+                    <option name="supportedTypes">
+                      <option value="postgres" />
+                    </option>
+                  </DataStoreSettingsV2>
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
       <entry key="com.company.bpmn-view-demo.main">
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
@@ -23,6 +41,7 @@
     </moduleSettings>
   </component>
   <component name="JmixPluginProjectSettings">
+    <option name="isHotDeploy" value="false" />
     <option name="savedDbProperties">
       <list>
         <SavedDbProperties>

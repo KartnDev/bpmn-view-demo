@@ -1,9 +1,8 @@
-package com.company.bpmnviewdemo.viewcreator;
+package com.company.bpmnviewdemo.impl;
 
 import com.company.bpmnviewdemo.api.CustomViewForm;
 import com.google.common.base.Strings;
-import com.vaadin.flow.router.RouteParam;
-import com.vaadin.flow.router.RouteParameters;
+import com.vaadin.flow.router.*;
 import io.jmix.bpm.data.form.FormData;
 import io.jmix.bpm.data.form.FormParam;
 import io.jmix.bpm.data.form.FormParamValueSource;
@@ -22,11 +21,7 @@ import org.flowable.engine.RuntimeService;
 import org.flowable.task.api.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
 
 
 @SuppressWarnings("JmixInternalElementUsage")
@@ -37,8 +32,6 @@ public class CustomViewCreator extends JmixViewProcessFormViewCreator {
     @Autowired
     private RuntimeService runtimeService;
     @Autowired
-    private DialogWindows dialogWindows;
-    @Autowired
     private ProcessFormContextObjectFactory processFormContextObjectFactory;
     @Autowired
     private ViewNavigators viewNavigators;
@@ -46,6 +39,8 @@ public class CustomViewCreator extends JmixViewProcessFormViewCreator {
     private BpmControllerProcessor bpmControllerProcessor;
     @Autowired
     protected ViewRegistry viewRegistry;
+
+
 
     @Override
     public DialogWindow createUserTaskView(CreationContext creationContext) {

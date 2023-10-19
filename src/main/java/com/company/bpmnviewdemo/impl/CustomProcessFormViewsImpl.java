@@ -1,6 +1,5 @@
-package com.company.bpmnviewdemo.viewcreator;
+package com.company.bpmnviewdemo.impl;
 
-import io.jmix.bpm.data.form.FormData;
 import io.jmix.bpmflowui.processform.ProcessFormViewsImpl;
 import io.jmix.bpmflowui.processform.viewcreator.ProcessFormViewCreator;
 import io.jmix.bpmflowui.processform.viewcreator.impl.JmixViewProcessFormViewCreator;
@@ -8,7 +7,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 @Component("bpm_CustomProcessFormViewsImpl")
 @Primary
