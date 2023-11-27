@@ -11,7 +11,6 @@ import io.jmix.bpmflowui.processform.ProcessFormContext;
 import io.jmix.bpmflowui.processform.ProcessFormContextObjectFactory;
 import io.jmix.bpmflowui.processform.ProcessFormInitData;
 import io.jmix.bpmflowui.processform.viewcreator.impl.JmixViewProcessFormViewCreator;
-import io.jmix.flowui.DialogWindows;
 import io.jmix.flowui.ViewNavigators;
 import io.jmix.flowui.view.DialogWindow;
 import io.jmix.flowui.view.View;
@@ -40,8 +39,6 @@ public class CustomViewCreator extends JmixViewProcessFormViewCreator {
     @Autowired
     protected ViewRegistry viewRegistry;
 
-
-
     @Override
     public DialogWindow createUserTaskView(CreationContext creationContext) {
         FormData formData = creationContext.getFormData();
@@ -52,7 +49,7 @@ public class CustomViewCreator extends JmixViewProcessFormViewCreator {
         ViewInfo viewInfo = viewRegistry.getViewInfo(formData.getScreenId());
         Class<? extends View> viewControllerClass = viewInfo.getControllerClass();
 
-        if(viewControllerClass.getAnnotation(CustomViewForm.class) != null) {
+        if (viewControllerClass.getAnnotation(CustomViewForm.class) != null) {
             ProcessFormContext processFormContext = processFormContextObjectFactory.getPrototype();
             Task task = creationContext.getTask();
             processFormContext.setTask(task);
@@ -69,9 +66,7 @@ public class CustomViewCreator extends JmixViewProcessFormViewCreator {
             viewNavigators.view(viewControllerClass)
                     .withRouteParameters(routeParam)
                     .withBackwardNavigation(true)
-                    .withAfterNavigationHandler(event -> {
-                        bpmControllerProcessor.process(event.getView(), processFormInitData);
-                    })
+                    .withAfterNavigationHandler(event -> bpmControllerProcessor.process(event.getView(), processFormInitData))
                     .navigate();
             return null;
         } else {
